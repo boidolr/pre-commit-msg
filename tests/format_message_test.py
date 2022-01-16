@@ -1,6 +1,6 @@
 import pytest
 
-from hooks.format_message import main
+from pre_commit_msg.format_message import main
 
 
 @pytest.mark.parametrize(
