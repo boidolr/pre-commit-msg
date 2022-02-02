@@ -7,24 +7,18 @@
 # Update repos:
 # pre-commit autoupdate
 ---
-minimum_pre_commit_version: 2.4.0
-default_language_version:
-  python: python3
-default_stages: [commit]
-fail_fast: false
-exclude: ^$
 repos:
-  # - repo: https://github.com/boidolr/pre-commit-msg
-  #   rev: v1.0.0
-  #   hooks:
-  #     - id: prepare-message
-  #       args: [--ignore-branch=master]
-  #     - id: format-message
-  # - repo: https://github.com/boidolr/pre-commit-text
-  #   rev: v1.0.0
-  #   hooks:
-  #     - id: pretty-format-yaml
-  #       args: [--preserve-quotes]
+  - repo: https://github.com/boidolr/pre-commit-msg
+    rev: v1.0.0
+    hooks:
+      - id: prepare-message
+        args: [--ignore-branch=main]
+      - id: format-message
+  - repo: https://github.com/boidolr/pre-commit-text
+    rev: v1.0.0
+    hooks:
+      - id: pretty-format-yaml
+        args: [--preserve-quotes]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0

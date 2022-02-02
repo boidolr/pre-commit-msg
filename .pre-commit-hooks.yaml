@@ -1,13 +1,13 @@
-- id: prepare-message
-  name: prepare commit message
-  description: Add prefix from feature branch to commit message.
-  language: python
-  entry: prepare-message
-  stages: [prepare-commit-msg]
+  - id: prepare-message
+    name: prepare commit message
+    description: Add prefix from feature branch to commit message.
+    language: python
+    entry: prepare-message
+    stages: [prepare-commit-msg]
 
-- id: format-message
-  name: check message formatting
-  description: Ensure commit message has correct formatting between header and description.
-  language: python
-  entry: format-message
-  stages: [commit-msg]
+  - id: format-message
+    name: check message formatting
+    description: Ensure commit message has correct formatting between header and description.
+    language: python
+    entry: format-message
+    stages: [commit-msg]
