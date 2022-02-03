@@ -14,6 +14,7 @@ repos:
       - id: prepare-message
         args: [--ignore-branch=main]
       - id: format-message
+
   - repo: https://github.com/boidolr/pre-commit-text
     rev: v1.0.0
     hooks:
