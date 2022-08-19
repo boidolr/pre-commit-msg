@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pre_commit_msg"
+description = "Some commit message hooks for pre-commit."
+authors = [
+  { name="Raphael Boidol", email="boidolr@users.noreply.github.com" },
+]
+urls = {"Respository" = "https://github.com/boidolr/pre-commit-msg"}
+license = {file = "LICENSE"}
+readme = "README.md"
+dynamic = ["version"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = ["tox", "tox-pyenv"]
+tests = [
+    "black",
+    "flake8<5",
+    "pre-commit",
+    "pytest",
+    "pytest-clarity",
+    "pytest-flake8",
+    "pytest-mypy",
+]
+
+[project.scripts]
+format-message = "pre_commit_msg.format_message:main"
+prepare-message = "pre_commit_msg.prepare_message:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "pre_commit_msg.VERSION"}
+
+[tool.setuptools]
+packages = ["pre_commit_msg"]
+
+[tool.black]
+target-version = ['py37']
+line-length = 120
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "--flake8 --mypy"
+filterwarnings = [
+    "error",
+    "ignore:SelectableGroups dict interface is deprecated::flake8",
+]
+
+[[tool.mypy.overrides]]
+module = "tests"
+disallow_untyped_defs = false
