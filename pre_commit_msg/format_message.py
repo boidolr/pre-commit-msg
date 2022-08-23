@@ -29,9 +29,7 @@ def _ensure_message_format(commit_msg_filepath: str, capitalize: bool) -> None:
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filename", help="Commit message file path")
-    parser.add_argument(
-        "-c", "--capitalize", action="store_true", help="Capitalize subject line"
-    )
+    parser.add_argument("-c", "--capitalize", action="store_true", help="Capitalize subject line")
     args = parser.parse_args(argv)
 
     _ensure_message_format(args.filename, args.capitalize)

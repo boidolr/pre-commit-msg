@@ -63,5 +63,5 @@ filterwarnings = [
 ]
 
 [[tool.mypy.overrides]]
-module = "tests"
+module = "tests.*"
 disallow_untyped_defs = false

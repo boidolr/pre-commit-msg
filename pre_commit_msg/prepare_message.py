@@ -12,15 +12,8 @@ from typing import Sequence
 
 
 def _execute_command(*args: str, returncode: Optional[int] = None) -> Optional[str]:
-    result = subprocess.run(  # nosec
-        args, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE
-    )
-    if (
-        returncode is None
-        and result.returncode != 0
-        or returncode is not None
-        and result.returncode != returncode
-    ):
+    result = subprocess.run(args, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)  # nosec
+    if returncode is None and result.returncode != 0 or returncode is not None and result.returncode != returncode:
         return None
     return result.stdout.strip()
 
@@ -43,9 +36,7 @@ def _get_branch_name() -> Optional[str]:
     return _execute_command("git", "symbolic-ref", "--short", "HEAD")
 
 
-def _is_wrong_message_prefix(
-    commit_msg_filepath: str, prefix_pattern: Pattern[str]
-) -> bool:
+def _is_wrong_message_prefix(commit_msg_filepath: str, prefix_pattern: Pattern[str]) -> bool:
     with open(commit_msg_filepath) as fh:
         commit_msg_start = fh.readline()
         return prefix_pattern.match(commit_msg_start) is None

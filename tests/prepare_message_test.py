@@ -67,9 +67,7 @@ def test_handle_ignored_branch(branch, content, return_code, temp_git_dir):
         ("feature/JIRA-5", " JIRA-5: foo", "JIRA-5: foo", 0),
     ),
 )
-def test_handle_prefix_on_feature_branch(
-    branch, content, expected, return_code, temp_git_dir
-):
+def test_handle_prefix_on_feature_branch(branch, content, expected, return_code, temp_git_dir):
     path = temp_git_dir.join("message")
     path.write(content)
     with temp_git_dir.as_cwd():
