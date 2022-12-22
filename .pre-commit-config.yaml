@@ -9,14 +9,14 @@
 ---
 repos:
   - repo: https://github.com/boidolr/pre-commit-msg
-    rev: v1.0.1
+    rev: v1.1.0
     hooks:
       - id: prepare-message
         args: [--ignore-branch=main]
       - id: format-message
 
   - repo: https://github.com/boidolr/pre-commit-text
-    rev: v1.0.2
+    rev: v1.1.0
     hooks:
       - id: pretty-format-yaml
         args: [--preserve-quotes]
@@ -80,6 +80,6 @@ repos:
         args: [--configfile, .bandit.yaml]
 
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.8.0.4
+    rev: v0.9.0.2
     hooks:
       - id: shellcheck
