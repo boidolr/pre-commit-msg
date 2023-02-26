@@ -29,3 +29,5 @@ For an extended example see [`.pre-commit-config.yaml`](.pre-commit-config.yaml)
         Needs to match with `--pattern`. Defaults to `^\s*\w+-\d+\s*:`
 - **`format-message`**: Ensure commit message conforms to format of headline followed by two empty lines.
     - `--capitalize` if the subject line should be capitalized. Other lines remain unchanged.
+- **`suggest-message`**: Add commit message suggestion from [whatthecommit](https://whatthecommit.com).
+    The code triggers a request to whatthecommit upon execution.

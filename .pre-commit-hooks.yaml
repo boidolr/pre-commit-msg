@@ -5,6 +5,13 @@
     entry: prepare-message
     stages: [prepare-commit-msg]
 
+  - id: suggest-message
+    name: suggest commit message
+    description: Add random 'suggestion' for a commit message.
+    language: python
+    entry: suggest-message
+    stages: [prepare-commit-msg]
+
   - id: format-message
     name: check message formatting
     description: Ensure commit message has correct formatting between header and description.

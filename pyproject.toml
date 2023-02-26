@@ -38,6 +38,7 @@ tests = [
 [project.scripts]
 format-message = "pre_commit_msg.format_message:main"
 prepare-message = "pre_commit_msg.prepare_message:main"
+suggest-message = "pre_commit_msg.suggest_message:main"
 
 [tool.setuptools.dynamic]
 version = {attr = "pre_commit_msg.VERSION"}
