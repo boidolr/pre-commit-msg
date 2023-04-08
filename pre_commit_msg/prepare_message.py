@@ -3,12 +3,12 @@ import argparse
 import re
 import subprocess  # nosec
 import sys
+from collections.abc import Sequence
 from operator import methodcaller
 from pathlib import Path
-from typing import Match
+from re import Match
+from re import Pattern
 from typing import Optional
-from typing import Pattern
-from typing import Sequence
 
 
 def _execute_command(*args: str, returncode: Optional[int] = None) -> Optional[str]:

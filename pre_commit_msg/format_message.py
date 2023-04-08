@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import argparse
 import sys
+from collections.abc import Sequence
 from typing import Optional
-from typing import Sequence
 
 
 def _ensure_message_format(commit_msg_filepath: str, capitalize: bool) -> None:
