@@ -19,7 +19,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 
 [project.optional-dependencies]
 dev = [
@@ -46,7 +46,7 @@ version = {attr = "pre_commit_msg.VERSION"}
 packages = ["pre_commit_msg"]
 
 [tool.black]
-target-version = ["py38"]
+target-version = ["py39"]
 line-length = 120
 
 [tool.mypy]
