@@ -9,14 +9,14 @@
 ---
 repos:
   - repo: https://github.com/boidolr/pre-commit-msg
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: prepare-message
         args: [--ignore-branch=main]
       - id: format-message
 
   - repo: https://github.com/boidolr/pre-commit-text
-    rev: v1.1.1
+    rev: v1.2.0
     hooks:
       - id: pretty-format-yaml
         args: [--preserve-quotes]
