@@ -1,12 +1,12 @@
 import pathlib
-import subprocess  # nosec
+import subprocess
 from typing import Optional
 
 import pytest
 
 
 def _execute_command(*args: str, returncode: Optional[int] = None) -> Optional[str]:
-    result = subprocess.run(args, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)  # nosec
+    result = subprocess.run(args, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)  # noqa: S603
     if returncode is None and result.returncode != 0 or returncode is not None and result.returncode != returncode:
         return None
     return result.stdout.strip()

@@ -1,7 +1,8 @@
 import pytest
 
-from .conftest import _execute_command
 from pre_commit_msg.prepare_message import main
+
+from .conftest import _execute_command
 
 
 def test_abort_when_no_branch(temp_git_dir):
