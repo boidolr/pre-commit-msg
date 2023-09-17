@@ -23,7 +23,6 @@ requires-python = ">=3.9"
 
 [project.optional-dependencies]
 dev = [
-    "black",
     "pre-commit",
     "ruff",
     "tox",
@@ -45,9 +44,6 @@ version = {attr = "pre_commit_msg.VERSION"}
 
 [tool.setuptools]
 packages = ["pre_commit_msg"]
-
-[tool.black]
-line-length = 120
 
 [tool.ruff]
 line-length = 120
