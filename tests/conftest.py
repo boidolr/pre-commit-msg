@@ -1,4 +1,3 @@
-import pathlib
 import subprocess
 from typing import Optional
 
@@ -59,9 +58,3 @@ def temp_rebase_conflict(temp_git_dir):
         assert "<<<<<<< HEAD" in path.read()
 
     return temp_git_dir
-
-
-@pytest.fixture()
-def dictionary_path():
-    current_file = pathlib.Path(__file__).resolve()
-    return str(current_file.parent / "words.json")
