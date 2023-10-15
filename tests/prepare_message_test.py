@@ -35,10 +35,10 @@ def test_ignore_rebase(temp_rebase_conflict):
 
 @pytest.mark.parametrize(
     ("branch", "content", "return_code"),
-    (
+    [
         ("develop", "foo", 1),
         ("master", "foo", 0),
-    ),
+    ],
 )
 def test_handle_ignored_branch(branch, content, return_code, temp_git_dir):
     path = temp_git_dir.join("message")
@@ -60,13 +60,13 @@ def test_handle_ignored_branch(branch, content, return_code, temp_git_dir):
 
 @pytest.mark.parametrize(
     ("branch", "content", "expected", "return_code"),
-    (
+    [
         ("feature/JIRA-1", "foo", "JIRA-1: foo", 0),
         ("hotfix/JIRA-2", "JIRA-2 foo", "JIRA-2: foo", 0),
         ("feature/JIRA-3", "JIRA-3: foo", "JIRA-3: foo", 0),
         ("feature/JIRA-4", "JIRA-4 : foo", "JIRA-4: foo", 0),
         ("feature/JIRA-5", " JIRA-5: foo", "JIRA-5: foo", 0),
-    ),
+    ],
 )
 def test_handle_prefix_on_feature_branch(branch, content, expected, return_code, temp_git_dir):
     path = temp_git_dir.join("message")

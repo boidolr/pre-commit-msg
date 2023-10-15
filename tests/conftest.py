@@ -12,15 +12,15 @@ def _execute_command(*args: str, returncode: Optional[int] = None) -> Optional[s
     return result.stdout.strip()
 
 
-@pytest.fixture
+@pytest.fixture()
 def temp_git_dir(tmpdir):
     git_dir = tmpdir.join("gits")
     git_dir.mkdir()
     _execute_command("git", "init", "--initial-branch=main", "--", str(git_dir))
-    yield git_dir
+    return git_dir
 
 
-@pytest.fixture
+@pytest.fixture()
 def temp_merge_conflict(temp_git_dir):
     with temp_git_dir.as_cwd():
         path = temp_git_dir.join("file")
@@ -37,10 +37,10 @@ def temp_merge_conflict(temp_git_dir):
 
         _execute_command("git", "merge", "main")
         assert "<<<<<<< HEAD" in path.read()
-    yield temp_git_dir
+    return temp_git_dir
 
 
-@pytest.fixture
+@pytest.fixture()
 def temp_rebase_conflict(temp_git_dir):
     with temp_git_dir.as_cwd():
         path = temp_git_dir.join("file")
@@ -58,10 +58,10 @@ def temp_rebase_conflict(temp_git_dir):
         _execute_command("git", "rebase", "main")
         assert "<<<<<<< HEAD" in path.read()
 
-    yield temp_git_dir
+    return temp_git_dir
 
 
-@pytest.fixture
+@pytest.fixture()
 def dictionary_path():
     current_file = pathlib.Path(__file__).resolve()
-    yield str(current_file.parent / "words.json")
+    return str(current_file.parent / "words.json")
