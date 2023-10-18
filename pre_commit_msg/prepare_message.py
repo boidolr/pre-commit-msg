@@ -8,17 +8,16 @@ from operator import methodcaller
 from pathlib import Path
 from re import Match
 from re import Pattern
-from typing import Optional
 
 
-def _execute_command(*args: str, returncode: Optional[int] = None) -> Optional[str]:
+def _execute_command(*args: str, returncode: int | None = None) -> str | None:
     result = subprocess.run(args, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)  # noqa: S603
     if returncode is None and result.returncode != 0 or returncode is not None and result.returncode != returncode:
         return None
     return result.stdout.strip()
 
 
-def _get_current_git_path() -> Optional[str]:
+def _get_current_git_path() -> str | None:
     return _execute_command("git", "rev-parse", "--git-path", ".")
 
 
@@ -32,7 +31,7 @@ def _git_op_in_progress() -> bool:
     return any(exists)
 
 
-def _get_branch_name() -> Optional[str]:
+def _get_branch_name() -> str | None:
     return _execute_command("git", "symbolic-ref", "--short", "HEAD")
 
 
@@ -44,7 +43,7 @@ def _is_wrong_message_prefix(commit_msg_filepath: str, prefix_pattern: Pattern[s
 
 def _update_message(
     commit_msg_filepath: str,
-    branch_match: Optional[Match[str]],
+    branch_match: Match[str] | None,
     prefix_pattern: Pattern[str],
 ) -> bool:
     if branch_match is None:
@@ -64,7 +63,7 @@ def _update_message(
     return True
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filename", help="Commit message file path")
     parser.add_argument(
