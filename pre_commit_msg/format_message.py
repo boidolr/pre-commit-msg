@@ -2,7 +2,6 @@
 import argparse
 import sys
 from collections.abc import Sequence
-from typing import Optional
 
 
 def _ensure_message_format(commit_msg_filepath: str, capitalize: bool) -> None:
@@ -26,7 +25,7 @@ def _ensure_message_format(commit_msg_filepath: str, capitalize: bool) -> None:
         fh.truncate()
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filename", help="Commit message file path")
     parser.add_argument("-c", "--capitalize", action="store_true", help="Capitalize subject line")
