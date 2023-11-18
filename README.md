@@ -1,4 +1,8 @@
-pre-commit-msg [![tag](https://img.shields.io/github/v/tag/boidolr/pre-commit-msg?sort=semver)](https://github.com/boidolr/pre-commit-msg/tags) [![Build](https://github.com/boidolr/pre-commit-msg/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/boidolr/pre-commit-msg/actions/workflows/continous-integration.yml) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+pre-commit-msg
+[![tag](https://img.shields.io/github/v/tag/boidolr/pre-commit-msg?sort=semver)](https://github.com/boidolr/pre-commit-msg/tags)
+![python](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Fboidolr%2Fpre-commit-msg%2Fmain%2Fpyproject.toml)
+[![Build](https://github.com/boidolr/pre-commit-msg/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/boidolr/pre-commit-msg/actions/workflows/continous-integration.yml)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 ================
 
 A collection of prepare message and commit message git hooks for use with the [pre-commit](https://github.com/pre-commit/pre-commit) framework. For details see the list of available hooks below.
