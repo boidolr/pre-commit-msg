@@ -1,0 +1,12 @@
+'cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Boidol"
+  given-names: "Raphael"
+title: "pre-commit-msg"
+abstract: >-
+  pre-commit-msg updates commit messages for you, simplifying the development process.
+license: MIT
+license-url: "https://github.com/boidolr/pre-commit-msg/blob/main/LICENSE"
+repository-code: "https://github.com/boidolr/pre-commit-msg"
+url: "https://github.com/boidolr/pre-commit-msg"
