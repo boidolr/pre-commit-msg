@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 import argparse
+import pathlib
 import sys
 from collections.abc import Sequence
 
 
 def _ensure_message_format(commit_msg_filepath: str, capitalize: bool) -> None:
     # ensure there are always two empty lines between short description and description
-    with open(commit_msg_filepath, "r+") as fh:
+    with pathlib.Path(commit_msg_filepath).open("r+") as fh:
         lines = fh.read().splitlines()
         if len(lines) > 0 and capitalize:
             lines[0] = lines[0].capitalize()
