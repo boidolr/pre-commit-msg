@@ -9,7 +9,7 @@
 ---
 repos:
   - repo: https://github.com/boidolr/pre-commit-msg
-    rev: v1.3.0
+    rev: v1.3.1
     hooks:
       - id: prepare-message
         args: [--ignore-branch=main]
