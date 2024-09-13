@@ -26,7 +26,7 @@ dev = [
     "pre-commit",
     "ruff",
     "tox",
-    "tox-pyenv",
+    "tox-uv",
 ]
 tests = [
     "pytest",
@@ -56,6 +56,7 @@ select = [
     "C4",       # flake8-comprehensions
     "G",        # flake8-logging-format
     "ANN",      # flake8-annotations
+    # "ARG",        # flake8-unused-arguments
     "SIM",      # flake8-simplify
     "PT",       # flake8-pytest-style
     "RET",      # flake8-return
