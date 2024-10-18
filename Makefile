@@ -1,28 +1,13 @@
 .DEFAULT_GOAL := all
 
 
-# venv handling: https://github.com/sio/Makefile.venv/blob/master/Makefile.venv
-VENVDIR=.venv
-MARKER=.initialized-with-Makefile.venv
-VENV=$(VENVDIR)/bin
-
-
-$(VENV):
-	python3 -m venv $(VENVDIR)
-	$(VENV)/python3 -m pip install --upgrade pip setuptools wheel
-
-
-$(VENV)/$(MARKER): $(VENV)
-
-
-## venv          : Initialize virtual environment with dependencies.
-.PHONY: venv
-venv: $(VENV)/$(MARKER)
-	$(VENV)/pip install -q .[tests]
-
-
 .PHONY: all
 all: format check test version
+
+
+.PHONY: sync
+sync:
+	@uv sync --all-extras
 
 
 .PHONY: help
@@ -32,26 +17,26 @@ help: Makefile
 
 ## upgrade       : Update pre-commit configuration.
 .PHONY: upgrade
-upgrade: venv
-	$(VENV)/pre-commit autoupdate
+upgrade: sync
+	uv run pre-commit autoupdate
 
 
 ## check         : Execute pre-commit hooks.
 .PHONY: check
-check: venv
-	$(VENV)/pre-commit run --all-files
+check: sync
+	uv run pre-commit run --all-files
 
 
 ## format        : Format code.
 .PHONY: format
-format: venv
-	$(VENV)/ruff format -q .
+format: sync
+	uv run ruff format -q .
 
 
 ## test          : Execute tests.
 .PHONY: test
-test: venv
-	$(VENV)/pytest -q
+test: sync
+	uv run pytest -q
 
 
 ## version       : Show which version is detected
@@ -75,8 +60,9 @@ endif
 release: test version
 	@echo "Next version: ${NEXT_VERSION}"
 	@sed  -E -e "s/${CURRENT}/${NEXT_VERSION}/" -i '' README.md pyproject.toml
-	@git add README.md pyproject.toml
-	git commit -m "Release version ${NEXT_VERSION}" && git tag "v${NEXT_VERSION}"
+	@uv lock
+	@git add README.md pyproject.toml uv.lock
+	git commit -m "chore: release version ${NEXT_VERSION}" && git tag "v${NEXT_VERSION}"
 
 
 ## release-patch : Increase patch version in files, commit and tag with git.
@@ -100,4 +86,4 @@ release-major: release
 ## clean         : Remove virtual environment.
 .PHONY: clean
 clean:
-	rm -r "$(VENVDIR)"
+       rm -r .venv
