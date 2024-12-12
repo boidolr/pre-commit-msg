@@ -36,11 +36,16 @@ jobs:
       - name: Install Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
+      - name: Install tox
+        run: uv tool install tox --with tox-uv
+
       - name: Execute tests
-        run: uv tool run tox -e ${{ matrix.python-version }}
+        run: tox --runner virtualenv -e ${{ matrix.python-version }}
 
   precommit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: boidolr/actions/run-precommit@main
+        env:
+          UV_PYTHON: "3.13"
