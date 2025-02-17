@@ -100,7 +100,7 @@ commands = [
         ], extend = true },
     ],
 ]
-extras = ["tests", "svg", "avif"]
+extras = ["tests"]
 runner = "uv-venv-lock-runner"
 uv_sync_flags = ["--no-editable"]
 
