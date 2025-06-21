@@ -5,9 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pre_commit_msg"
 description = "Some commit message hooks for pre-commit."
-authors = [
-    { name = "Raphael Boidol", email = "boidolr@users.noreply.github.com" },
-]
+authors = [{ name = "Raphael Boidol", email = "pre-commit@boidol.dev" }]
 urls = { "Respository" = "https://github.com/boidolr/pre-commit-msg" }
 license = { file = "LICENSE" }
 readme = "README.md"
@@ -23,7 +21,7 @@ requires-python = ">=3.10,<4"
 
 [project.optional-dependencies]
 dev = ["pre-commit", "ruff", "tox", "tox-uv"]
-tests = ["pytest", "pytest-clarity", "pytest-ruff", "pytest-mypy"]
+tests = ["pytest", "pytest-clarity", "pytest-ruff", "pytest-ty"]
 
 [project.scripts]
 format-message = "pre_commit_msg.format_message:main"
@@ -69,25 +67,17 @@ ignore-fully-untyped = true
 force-single-line = true
 order-by-type = false
 
-[tool.mypy]
-check_untyped_defs = true
-disallow_any_generics = true
-disallow_incomplete_defs = true
-disallow_untyped_defs = true
-no_implicit_optional = true
-ignore_missing_imports = true
-
 [tool.pytest.ini_options]
-addopts = "--mypy --ruff"
+addopts = "--ty --ruff"
+testpaths = ["tests", "pre_commit_msg"]
 filterwarnings = ["error"]
 
-[[tool.mypy.overrides]]
-module = "tests.*"
-disallow_untyped_defs = false
+[tool.coverage.run]
+core = "sysmon"
 
 [tool.tox]
 requires = ["tox>=4.19", "tox-uv>=1.19.1"]
-envlist = ["py310", "py311", "py312", "py313", "py314", "pre-commit"]
+envlist = ["py310", "py311", "py312", "py313", "py314", "pre-commit", "static"]
 isolated_build = true
 
 [tool.tox.env_run_base]
