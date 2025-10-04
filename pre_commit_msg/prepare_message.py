@@ -11,8 +11,8 @@ from re import Pattern
 
 
 def _execute_command(*args: str, returncode: int | None = None) -> str | None:
-    result = subprocess.run(args, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)  # noqa: S603
-    if returncode is None and result.returncode != 0 or returncode is not None and result.returncode != returncode:
+    result = subprocess.run(args, check=False, encoding="utf-8", stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)  # noqa: S603
+    if (returncode is None and result.returncode != 0) or (returncode is not None and result.returncode != returncode):
         return None
     return result.stdout.strip()
 
