@@ -19,11 +19,11 @@ jobs:
   build:
     strategy:
       matrix:
-        python-version: ["310", "311", "312", "313", "314"]
+        python-version: ["310", "311", "312", "313", "314", "314t"]
     runs-on: ubuntu-latest
     env:
       # renovate: datasource=github-releases depName=astral-sh/uv
-      UV_VERSION: "0.7.9"
+      UV_VERSION: "0.8.22"
 
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4

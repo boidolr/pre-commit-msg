@@ -35,26 +35,14 @@ line-length = 120
 fix = true
 
 [tool.ruff.lint]
-select = [
-    "F",    # Pyflakes
-    "E",
-    "W",    # Pycodestyle
-    "UP",   # pyupgrade
-    "FURB", # refurb
-    "S",    # flake8-bandit
-    "C4",   # flake8-comprehensions
-    "G",    # flake8-logging-format
-    "ANN",  # flake8-annotations
-    # "ARG",        # flake8-unused-arguments
-    "SIM",    # flake8-simplify
-    "PT",     # flake8-pytest-style
-    "RET",    # flake8-return
-    "PTH",    # flake8-use-pathlib
-    "TID252", # flake8-tidy-imports (relative-imports)
-    "PERF",   # Perflint
-    "FLY",    # flynt
-    "I",      # isort
-    "RUF100", # Unneeded noqa
+select = ["ALL"]
+extend-ignore = [
+    "D",
+    "EM101",
+    "FBT001",
+    "PLR2004",
+    "T201",
+    "TRY003"
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -77,8 +65,18 @@ core = "sysmon"
 
 [tool.tox]
 requires = ["tox>=4.19", "tox-uv>=1.19.1"]
-envlist = ["py310", "py311", "py312", "py313", "py314", "pre-commit", "static"]
+envlist = ["py310", "py311", "py312", "py313", "py314", "py314t", "pre-commit", "static"]
 isolated_build = true
+
+[tool.tox.gh-actions]
+python = """
+	3.10: py310
+	3.11: py311
+	3.12: py312
+	3.13: py313, pre-commit, static
+	3.14: py314
+	3.14t: py314t
+	"""
 
 [tool.tox.env_run_base]
 description = "Run test under {base_python}"

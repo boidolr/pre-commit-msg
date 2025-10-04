@@ -51,7 +51,7 @@ def test_handle_ignored_branch(branch, content, return_code, temp_git_dir):
                 (
                     "--ignore-branch=master",
                     path.strpath,
-                )
+                ),
             )
             == return_code
         )
