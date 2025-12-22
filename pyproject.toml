@@ -20,7 +20,7 @@ classifiers = [
 requires-python = ">=3.10,<4"
 
 [project.optional-dependencies]
-dev = ["pre-commit", "ruff", "tox", "tox-uv"]
+dev = ["ruff", "ty", "tox", "tox-uv"]
 tests = ["pytest", "pytest-clarity", "pytest-ruff", "pytest-ty"]
 
 [project.scripts]
@@ -64,7 +64,7 @@ filterwarnings = ["error"]
 core = "sysmon"
 
 [tool.tox]
-requires = ["tox>=4.19", "tox-uv>=1.19.1"]
+requires = ["tox>=4.31.0", "tox-uv>=1.29.0"]
 envlist = ["py310", "py311", "py312", "py313", "py314", "py314t", "pre-commit", "static"]
 isolated_build = true
 
@@ -95,8 +95,8 @@ uv_sync_flags = ["--no-editable"]
 [tool.tox.env.pre-commit]
 description = "run commit hooks on code base"
 skip_install = true
-deps = ["pre-commit"]
-commands = [["pre-commit", "run", "--all-files"]]
+deps = ["prek"]
+commands = [["prek", "run", "--all-files"]]
 runner = "virtualenv"
 
 [tool.tox.env.static]
