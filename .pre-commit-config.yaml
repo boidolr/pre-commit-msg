@@ -22,7 +22,7 @@ repos:
         args: [--preserve-quotes]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-merge-conflict
       - id: check-yaml
@@ -34,7 +34,7 @@ repos:
         args: [--autofix, --indent=4, --no-sort-keys]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.0
+    rev: v0.14.10
     hooks:
       - id: ruff-check
         args: [--fix]

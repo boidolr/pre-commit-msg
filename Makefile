@@ -86,4 +86,4 @@ release-major: release
 ## clean         : Remove virtual environment.
 .PHONY: clean
 clean:
-       rm -r .venv
+	rm -r .venv
