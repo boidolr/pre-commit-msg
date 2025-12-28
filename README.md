@@ -12,7 +12,7 @@ A collection of prepare message and commit message git hooks for use with the [p
 Add this to your `.pre-commit-config.yaml`:
 ```
     -   repo: https://github.com/boidolr/pre-commit-msg
-        rev: v1.3.2  # Use the ref you want to point at
+        rev: v1.3.3  # Use the ref you want to point at
         hooks:
         -   id: format-message
         # -   id: ...
