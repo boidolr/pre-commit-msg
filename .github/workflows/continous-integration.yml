@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["310", "311", "312", "313", "314", "314t"]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     env:
       # renovate: datasource=github-releases depName=astral-sh/uv
       UV_VERSION: "0.9.7"
@@ -43,9 +43,9 @@ jobs:
         run: tox -e ${{ matrix.python-version }}
 
   precommit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: boidolr/actions/run-precommit@main
         env:
-          UV_PYTHON: "3.13"
+          UV_PYTHON: "3.14"
