@@ -38,6 +38,7 @@ fix = true
 select = ["ALL"]
 extend-ignore = [
     "D",
+    "COM812",
     "EM101",
     "FBT001",
     "PLR2004",
