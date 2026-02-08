@@ -21,26 +21,12 @@ jobs:
       matrix:
         python-version: ["310", "311", "312", "313", "314", "314t"]
     runs-on: ubuntu-slim
-    env:
-      # renovate: datasource=github-releases depName=astral-sh/uv
-      UV_VERSION: "0.9.28"
-
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+      - uses: boidolr/actions/run-tox@main
         with:
-          enable-cache: true
-          version: ${{ env.UV_VERSION }}
-
-      - name: Install Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
-
-      - name: Install tox
-        run: uv tool install tox --with tox-uv
-
-      - name: Execute tests
-        run: tox -e ${{ matrix.python-version }}
+          python-version: ${{ matrix.python-version }}
 
   precommit:
     runs-on: ubuntu-slim
