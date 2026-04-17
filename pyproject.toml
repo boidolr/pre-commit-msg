@@ -20,7 +20,7 @@ classifiers = [
 requires-python = ">=3.10,<4"
 
 [dependency-groups]
-dev = ["ruff", "ty", "tox", "tox-uv"]
+dev = ["ruff", "ty", "tox", "tox-uv-bare"]
 tests = ["pytest", "pytest-clarity", "pytest-ruff", "pytest-ty"]
 
 [project.scripts]
