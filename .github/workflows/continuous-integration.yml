@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: boidolr/actions/run-tox@47f62c14dbb70a62193d06271aa77c67ef110445 # main
+      - uses: boidolr/actions/run-tox@47e04d3a186f089ba7f55470b6a6519b0bd77bad # main
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -32,6 +32,6 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - uses: boidolr/actions/run-precommit@47f62c14dbb70a62193d06271aa77c67ef110445 # main
+      - uses: boidolr/actions/run-precommit@47e04d3a186f089ba7f55470b6a6519b0bd77bad # main
         env:
           UV_PYTHON: "3.14"
